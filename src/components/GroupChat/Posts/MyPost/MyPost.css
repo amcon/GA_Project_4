@@ -1,0 +1,35 @@
+.my-post {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-post button {
+  margin-left: 2%;
+}
+
+#prof-pic {
+  width: 16%;
+  height: 20vh;
+  border-radius: 5em;
+  margin: 1%;
+}
+
+.post-content {
+  width: 77%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-left: 2%;
+}
+
+.post-content img {
+  height: 25vh;
+  width: 40%;
+  margin-bottom: 2%;
+}

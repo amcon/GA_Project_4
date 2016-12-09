@@ -1,0 +1,16 @@
+.group-chat {
+  height: 95vh;
+  width: 70%;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post-box {
+  height: 73vh;
+  width: 100%;
+  background-color: white;
+  overflow: scroll;
+}
