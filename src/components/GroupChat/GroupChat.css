@@ -11,6 +11,6 @@
 .post-box {
   height: 73vh;
   width: 100%;
-  background-color: white;
+  background-color: lightgrey;
   overflow: scroll;
 }

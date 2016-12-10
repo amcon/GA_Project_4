@@ -13,6 +13,16 @@ class Profile extends Component {
           </div>
           <button>Edit</button>
         </div>
+          <div className={styles["edit-prof"]}>
+            <div className={styles["input"]}>
+              <p>New Username:</p>
+              <input />
+            </div>
+            <div className={styles["input"]}>
+              <p>New Email:</p>
+              <input />
+            </div>
+          </div>
       </div>
     );
   }

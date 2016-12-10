@@ -1,11 +1,12 @@
 .my-post {
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid black;
+  width: 69%;
+  background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin: 1% 2% 0 30%;
+  border-radius: 1em;
 }
 
 .my-post button {
@@ -13,23 +14,22 @@
 }
 
 #prof-pic {
-  width: 16%;
+  width: 22%;
   height: 20vh;
   border-radius: 5em;
   margin: 1%;
 }
 
 .post-content {
-  width: 77%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-end;
-  margin-left: 2%;
+  align-items: center;
 }
 
 .post-content img {
   height: 25vh;
-  width: 40%;
-  margin-bottom: 2%;
+  width: 55%;
+  margin-bottom: 5%;
 }
