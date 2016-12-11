@@ -86,7 +86,6 @@ function updateUser (req, res, next) {
       .then(() => next())
       .catch(err => next(err));
   })
-
   .catch(err => next(err));
 }
 
