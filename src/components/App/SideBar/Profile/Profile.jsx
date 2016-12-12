@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import styles from './Profile.css';
 
 class Profile extends Component {
-  render() {
+    render() {
     return (
       <div className={styles["profile"]}>
-        <img src="http://market.ionic.io/img/user-default.png" alt="" />
+        <img src={this.props.profile_pic} alt="" />
         <div className={styles["edit-user"]}>
           <div className={styles["user-info"]}>
-            <p>Username: USERNAME GOES HERE</p>
-            <p>Email: USER EMAIL GOES HERE</p>
+            <p>Username: {this.props.user_name}</p>
+            <p>Email: {this.props.email}</p>
           </div>
           <button>Edit</button>
         </div>
@@ -22,6 +22,7 @@ class Profile extends Component {
               <p>New Email:</p>
               <input />
             </div>
+            <button>Submit</button>
           </div>
       </div>
     );

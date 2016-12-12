@@ -2,8 +2,6 @@ const router = require('express').Router();
 const userModel = require('../models/user.js');
 const auth = require('../lib/auth.js');
 
-// router.use('/users', usersRouter);
-
 function sendAsJSON (req, res, next) {
   res.json(res.rows);
 }
@@ -19,7 +17,7 @@ router.route('/:user_id/groups')
 
 // Get all users for groups and make a new user
 router.route('/')
-  .get(/* getAllUsers */auth.authenticateUser, sendAsJSON)
+  .get(userModel.getAllUsers, /*auth.authenticateUser,*/ sendAsJSON)
   .post(userModel.createUser, sendAsJSON);
 
 module.exports = router;

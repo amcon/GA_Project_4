@@ -35,7 +35,7 @@
 }
 
 .edit-prof {
-  height: 15vh;
+  height: 20vh;
   width: 100%;
   box-sizing: border-box;
   border: 1px dotted lightgrey;
@@ -43,12 +43,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 0;
 }
 
 .input {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.edit-prof button {
+  margin-bottom: 2%;
 }

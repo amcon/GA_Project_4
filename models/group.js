@@ -7,32 +7,47 @@ const fs = require('fs');
 const path = require('path');
 
 function getOneGroup (req, res, next) {
-  const group_id = req.params.id;
-
-  const query = `SELECT * FROM group WHERE group_id = $1;`;
-  const values = [group_id];
-
-  db.oneOrNone(query, values)
-  .then((group) => res.rows = group)
-  .then(() => next())
+  db.oneOrNone(`SELECT * FROM "group" WHERE group_id = $1`, [req.params.group_id])
+  .then((group) => {
+    res.rows = group;
+    next();
+  })
   .catch(err => next(err));
 }
 
 function getAllGroups (req, res, next) {
-  const query = `SELECT * FROM group;`;
+  db.any('SELECT * FROM "group";')
+  .then((groups) => {
+    res.rows = groups;
+    next();
+  })
+  .catch(err => next(err));
+}
 
-  db.any(query, values)
-  .then((groups) => res.rows.groups = groups)
-  .then(() => next())
+function getAdminGroups (req, res, next) {
+  db.any('SELECT * FROM "group" WHERE admin_id = $1;', [req.params.user_id])
+  .then((groups) => {
+    res.rows = groups;
+    next();
+  })
+  .catch(err => next(err));
+}
+
+function getGroupsImIn (req, res, next) {
+  db.any(`SELECT * FROM "group" INNER JOIN members ON members.user_id = user_id WHERE members.group_id = "group".group_id AND members.user_id = $1`, [req.params.user_id])
+  .then((groups) => {
+    res.rows = groups;
+    next();
+  })
   .catch(err => next(err));
 }
 
 function getAllPosts (req, res, next) {
-  const query = `SELECT * FROM post WHERE group_id = $1;`;
-
-  db.any(query, values)
-  .then((posts) => res.rows.posts = posts)
-  .then(() => next())
+  db.any(`SELECT * FROM post WHERE group_id = $1`, [req.params.group_id])
+  .then((posts) => {
+    res.rows = posts;
+    next();
+  })
   .catch(err => next(err));
 }
 
@@ -48,17 +63,9 @@ function getUserData (req, res, next) {
 }
 
 
- // ** THIS REALLY MIGHT NEED SOME WORK!
 function getAllUserData (req, res, next) {
-  const values = [
-    username,
-    email,
-    prof_pic,
-    password,
-    ];
-  const query = `SELECT * FROM user LEFT JOIN members ON members.group_id = group_id WHERE members.group_id = $1;`;
-  db.any(query, values)
-  .then(users => res.userInfo = user.data)
+  db.any(`SELECT * FROM "user" INNER JOIN members ON members.group_id = group_id WHERE members.user_id = "user".user_id AND members.group_id = $1;`, [req.params.group_id])
+  .then(users => res.rows = users)
   .then(() => next())
   .catch(err => next(err));
 }
@@ -69,18 +76,18 @@ function createGroup (req, res, next) {
   const users = req.body.users;
 
   const queryOne = `
-    INSERT INTO group
-      (group_name)
+    INSERT INTO "group"
+      (group_name, admin_id)
     VALUES
-      ($1)
+      ($1, $2)
     RETURNING *;
   `;
 
   const queryTwo = `
     INSERT INTO members
-      (group_id, user_id, admin_id)
+      (group_id, user_id)
     VALUES
-      ($2, $3, $4)
+      ($3, $4)
     ;
   `;
 
@@ -92,7 +99,7 @@ function createGroup (req, res, next) {
 
   db.one(queryOne, values)
   .then((inserted) => {
-    res.insertedPost = inserted;
+    res.insertedGroup = inserted;
     values.push(parseInt(inserted.group_id, inserted.user_id, inserted.admin_id));
     db.none(queryTwo, values)
     .then(() => next())
@@ -186,7 +193,7 @@ function createImages (req, res, next) {
 function deleteGroup (req, res, next) {
   const group_id = req.params.id;
 
-  const query = `DELETE FROM members WHERE group_id = $1; DELETE FROM group WHERE group_id = $1;`;
+  const query = `DELETE FROM members WHERE group_id = $1; DELETE FROM "group" WHERE group_id = $1;`;
   const values = [group_id];
 
   db.none(query, values)
@@ -204,6 +211,8 @@ function deletePost (req, res, next) {
 module.exports = {
   getOneGroup,
   getAllGroups,
+  getAdminGroups,
+  getGroupsImIn,
   getAllPosts,
   getUserData,
   getAllUserData,

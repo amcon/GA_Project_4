@@ -29,17 +29,29 @@ function sendAsJSON (req, res, next) {
 
 
 // Get the groups for one specific user and display them on the user side-bar
-router.route('/:user_id/groups')
-  .get(groupModel.getAllGroups, sendAsJSON)
-  .post(groupModel.createGroup, sendAsJSON);
+router.route('/users/:user_id/admin')
+  .get(groupModel.getAdminGroups, sendAsJSON);
+
+router.route('/users/:user_id/groups')
+  .get(groupModel.getGroupsImIn, sendAsJSON);
 
 // Get the specific group information and render the chat box
 router.route('/:group_id')
-  .get(groupModel.getOneGroup, groupModel.getAllPosts, groupModel.getUserData, groupModel.getAllUserData, sendAsJSON)
-  .post(groupModel.createPost, groupModel.generateFilePrefix, groupModel.createImages, sendAsJSON)
-  .delete(groupModel.deleteGroup);
+  .get(groupModel.getOneGroup, /*groupModel.getUserData,*/ sendAsJSON)
+  .post(/*groupModel.createPost, groupModel.generateFilePrefix, groupModel.createImages,*/ sendAsJSON)
+  .delete(/*groupModel.deleteGroup*/);
+
+router.route('/:group_id/users')
+  .get(groupModel.getAllUserData, sendAsJSON);
+
+router.route('/:group_id/posts')
+  .get(groupModel.getAllPosts, sendAsJSON);
 
 router.route('/:group_id/:post_id')
-  .delete(groupModel.deletePost)
+  .delete(/*groupModel.deletePost*/);
+
+router.route('/')
+  .get(groupModel.getAllGroups, sendAsJSON)
+  .post(/*groupModel.createGroup,*/ sendAsJSON);
 
 module.exports = router;

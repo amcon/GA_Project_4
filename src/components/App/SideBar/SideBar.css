@@ -1,0 +1,16 @@
+.side-bar {
+  height: 95vh;
+  width: 30%;
+  overflow: scroll;
+  box-sizing: border-box;
+  border-left: 1px solid black;
+  position: relative;
+  z-index: 1;
+}
+
+.group-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
