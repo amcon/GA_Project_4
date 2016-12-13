@@ -38,11 +38,11 @@ router.route('/users/:user_id/groups')
 // Get the specific group information and render the chat box
 router.route('/:group_id')
   .get(groupModel.getOneGroup, groupModel.getAllUserData, groupModel.getAllPosts, groupModel.prepareResponse, sendAsJSON)
-  .post(/*groupModel.createPost, groupModel.generateFilePrefix, groupModel.createImages,*/ sendAsJSON)
+  .post(groupModel.createPost, /*groupModel.generateFilePrefix, groupModel.createImages,*/ sendAsJSON)
   .delete(/*groupModel.deleteGroup*/);
 
 router.route('/:group_id/:post_id')
-  .delete(/*groupModel.deletePost*/);
+  .delete(groupModel.deletePost);
 
 router.route('/')
   .get(groupModel.getAllGroups, sendAsJSON)

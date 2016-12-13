@@ -123,34 +123,10 @@ function createGroup (req, res, next) {
 }
 
 function createPost (req, res, next) {
-  const text = req.body.text;
-  const image_url = req.body.image_url;
-  const group_id = req.body.group_id;
-  const user_id = req.body.user_id;
-
-  const query = `
-    INSERT INTO post
-      (text, image_url, group_id, user_id)
-    VALUES
-      ($1, $2, $3, $4)
-    RETURNING *;
-  `;
-
-  const values = [
-    text,
-    image_url,
-    group_id,
-    user_id,
-  ];
-
-  db.one(query, values)
-  .then((inserted) => {
-    res.insertedPost = inserted;
-    values.push(parseInt(inserted.group_id, inserted.user_id))
-    .then(() => next())
+  console.log(req.body);
+  db.none(`INSERT INTO post (post_text, image_url, group_id, user_id, prof_pic) VALUES ($1, $2, $3, $4, $5)`, [req.body.post_text, req.body.image_url, req.params.group_id, req.body.user_id, req.body.prof_pic])
+    .then(next())
     .catch(err => next(err));
-  })
-  .catch(err => next(err));
 }
 
 function generateFilePrefix (req, res, next) {
@@ -217,9 +193,9 @@ function deleteGroup (req, res, next) {
 }
 
 function deletePost (req, res, next) {
-  const post_id = req.params.id;
-
-  const query = `DELETE FROM post WHERE post_id = $1;`;
+  db.none(`DELETE FROM post WHERE post_id = $1;`, [req.params.post_id])
+    .then(next())
+    .catch(err => next(err));
 }
 
 module.exports = {

@@ -33,7 +33,7 @@
 }
 
 .text {
-  width: 50%;
+  width: 30%;
   height: 13vh;
 }
 
@@ -48,4 +48,12 @@
   color: white;
   font-size: 2em;
   margin-top: 15%;
+}
+
+.useless-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
 }

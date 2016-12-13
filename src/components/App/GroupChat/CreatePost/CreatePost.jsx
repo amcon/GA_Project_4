@@ -10,13 +10,29 @@ class CreatePost extends Component {
         <div className={styles["choose"]}>
           <img src={this.props.user.profile_pic} alt="" />
         </div>
-        <textarea className={styles["text"]} cols="40" rows="5" placeholder="What's on your mind?" />
+        <textarea
+          className={styles["text"]}
+          cols="40"
+          rows="5"
+          placeholder="What's on your mind?"
+          value={this.props.postFormText}
+          onChange={this.props.updateFormText}
+          />
         <DropZone
           className={styles['drop-zone']}
           multiple={false}
           accept="image/*"><p>+</p>
         </DropZone>
-        <button>Submit</button>
+        <div className={styles["useless-inputs"]}>
+          <p>post pic:
+            <input
+              type="text"
+              value={this.props.postFormPic}
+              onChange={this.props.updateFormPic}
+            />
+          </p>
+        </div>
+        <button onClick={this.props.handleFormSubmit}>Submit</button>
       </div>
     );
   }

@@ -7,7 +7,7 @@ import CreatePost from './CreatePost/CreatePost.jsx';
 class GroupChat extends Component {
 
   renderGroupsUsers() {
-    console.log(this.props.group);
+    // console.log(this.props.group);
     return this.props.users.map((user, i) =>
         <GroupHeader
           key={i}
@@ -26,10 +26,16 @@ class GroupChat extends Component {
         <div className={styles["post-box"]}>
           <Posts
             posts={this.props.posts}
+            handleDeletePost={this.props.handleDeletePost}
           />
         </div>
         <CreatePost
           user={this.props.user}
+          postFormText={this.props.postFormText}
+          postFormPic={this.props.postFormPic}
+          updateFormText={this.props.updateFormText}
+          updateFormPic={this.props.updateFormPic}
+          handleFormSubmit={this.props.handleFormSubmit}
         />
       </div>
     );

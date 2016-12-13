@@ -16,6 +16,10 @@ class App extends Component {
         getPosts: [],
         getUsers: [],
         posts: [],
+        postFormText: '',
+        postFormUserId: 0,
+        postFormProfPic: '',
+        postFormPic: '',
       };
     }
 
@@ -63,8 +67,69 @@ class App extends Component {
           getUsers: data.get_users,
           group: data.group_info
         });
-        console.log(this.state.group);
+        // console.log(this.state.getPosts);
       })
+    }
+
+    updateFormText(e) {
+      this.setState({
+        postFormText: e.target.value,
+      });
+    }
+
+    updateFormPic(e) {
+      this.setState({
+        postFormPic: e.target.value,
+      });
+    }
+
+    // updateFormUserId(e) {
+    //   this.setState({
+    //     postFormUserId: parseInt(e.target.value),
+    //   });
+    // }
+
+    // updateFormProfPic(e) {
+    //   this.setState({
+    //     postFormProfPic: e.target.value,
+    //   });
+    // }
+
+    handleFormSubmit() {
+      fetch('/api/groups/1', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          post_text: this.state.postFormText,
+          image_url: this.state.postFormPic,
+          prof_pic: this.state.user.profile_pic,
+          user_id: parseInt(this.state.user.user_id),
+        })
+      })
+      .then(this.setState({
+        postFormText: '',
+        postFormPic: '',
+        // postFormProfPic: '',
+        // postFormUserId: 0,
+      }))
+      .then(() => this.getDefaultGroup())
+      .catch(err => console.log(err));
+    }
+
+    handleDeletePost(id) {
+      fetch(`/api/groups/1/${id}`, {
+        method: 'delete'
+      })
+      .then(() => {
+        let posts = this.state.getPosts.filter((post) => {
+          return post.post_id != post.post_id;
+        });
+        this.setState({ posts })
+      })
+      .then(() =>this.getDefaultGroup())
+      .catch(err => console.log(err));
     }
 
     componentWillMount() {
@@ -84,6 +149,16 @@ class App extends Component {
               users={this.state.getUsers}
               posts={this.state.getPosts}
               user={this.state.user}
+              postFormText={this.state.postFormText}
+              postFormPic={this.state.postFormPic}
+              postFormUserId={this.state.postFormUserId}
+              postFormProfPic={this.state.postFormProfPic}
+              updateFormText={event => this.updateFormText(event)}
+              updateFormPic={event => this.updateFormPic(event)}
+              updateFormUserId={event => this.updateFormUserId(event)}
+              updateFormProfPic={event => this.updateFormProfPic(event)}
+              handleFormSubmit={() => this.handleFormSubmit()}
+              handleDeletePost={this.handleDeletePost.bind(this)}
             />
             <SideBar
               user={this.state.user}
