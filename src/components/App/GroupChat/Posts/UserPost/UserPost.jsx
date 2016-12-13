@@ -5,10 +5,10 @@ class UserPost extends Component {
   render() {
     return (
       <div className={styles["user-post"]}>
-        <img id={styles["prof-pic"]} src="http://market.ionic.io/img/user-default.png" alt="" />
+        <img id={styles["prof-pic"]} src={this.props.prof_pic} alt="" />
         <div className={styles["post-content"]}>
-          <p>POST TEXT GOES HERE</p>
-          <img src="" alt="post-image" />
+          <p>{this.props.text}</p>
+          <img src={this.props.image} alt="post-image" />
         </div>
       </div>
     );

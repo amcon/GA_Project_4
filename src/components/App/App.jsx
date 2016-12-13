@@ -9,13 +9,15 @@ class App extends Component {
     super(props);
       this.state = {
         user: [],
+        users: [],
         admin_groups: [],
         groups_im_in: [],
         group: [],
+        getPosts: [],
+        getUsers: [],
         posts: [],
       };
     }
-
 
     getUser() {
       fetch(`/api/users/1`)
@@ -24,7 +26,7 @@ class App extends Component {
         this.setState({
           user: data
         });
-        // console.log(this.state.user);
+        console.log(this.state.user);
       })
       .catch(err => console.log(err));
     }
@@ -57,17 +59,19 @@ class App extends Component {
       .then(r => r.json())
       .then((data) => {
         this.setState({
-          group: data
+          getPosts: data.get_posts,
+          getUsers: data.get_users,
+          group: data.group_info
         });
         console.log(this.state.group);
       })
     }
 
     componentWillMount() {
-    this.getDefaultGroup();
     this.getUser();
     this.getGroupsIAdmin();
     this.getGroupsImIn();
+    this.getDefaultGroup();
    }
 
     render() {
@@ -75,12 +79,16 @@ class App extends Component {
         <div className={styles['App']}>
           <Header />
           <div className={styles["content"]}>
-            <GroupChat />
+            <GroupChat
+              group={this.state.group}
+              users={this.state.getUsers}
+              posts={this.state.getPosts}
+              user={this.state.user}
+            />
             <SideBar
               user={this.state.user}
               admin_groups={this.state.admin_groups}
               groups_im_in={this.state.groups_im_in}
-              group={this.state.group}
             />
           </div>
         </div>

@@ -23,7 +23,8 @@ CREATE TABLE post (
   post_text TEXT NOT NULL,
   image_url VARCHAR,
   group_id INT,
-  user_id INT
+  user_id INT,
+  prof_pic VARCHAR
 );
 
 CREATE TABLE "group" (

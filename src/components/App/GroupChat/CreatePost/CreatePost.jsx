@@ -8,7 +8,7 @@ class CreatePost extends Component {
     return (
       <div className={styles["create-post"]}>
         <div className={styles["choose"]}>
-          <img src="http://market.ionic.io/img/user-default.png" alt="" />
+          <img src={this.props.user.profile_pic} alt="" />
         </div>
         <textarea className={styles["text"]} cols="40" rows="5" placeholder="What's on your mind?" />
         <DropZone

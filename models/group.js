@@ -9,10 +9,41 @@ const path = require('path');
 function getOneGroup (req, res, next) {
   db.oneOrNone(`SELECT * FROM "group" WHERE group_id = $1`, [req.params.group_id])
   .then((group) => {
-    res.rows = group;
+    res.group_info = group;
     next();
   })
   .catch(err => next(err));
+}
+
+function getAllUserData (req, res, next) {
+  db.any(`SELECT * FROM "user" INNER JOIN members ON members.group_id = group_id WHERE members.user_id = "user".user_id AND members.group_id = $1;`, [req.params.group_id])
+  .then(users => res.get_users = users)
+  .then(() => next())
+  .catch(err => next(err));
+}
+
+function getAllPosts (req, res, next) {
+  db.any(`SELECT * FROM post WHERE group_id = $1`, [req.params.group_id])
+  .then((posts) => {
+    res.get_posts = posts;
+    next();
+  })
+  .catch(err => next(err));
+}
+
+function prepareResponse (req, res, next) {
+  const group_info = res.group_info;
+  const get_users = res.get_users;
+  const get_posts = res.get_posts;
+
+  const retObj = {
+    group_info: group_info,
+    get_users: get_users,
+    get_posts: get_posts,
+  }
+
+  res.rows = retObj;
+  next();
 }
 
 function getAllGroups (req, res, next) {
@@ -42,15 +73,6 @@ function getGroupsImIn (req, res, next) {
   .catch(err => next(err));
 }
 
-function getAllPosts (req, res, next) {
-  db.any(`SELECT * FROM post WHERE group_id = $1`, [req.params.group_id])
-  .then((posts) => {
-    res.rows = posts;
-    next();
-  })
-  .catch(err => next(err));
-}
-
 function getUserData (req, res, next) {
   const token = req.headers['token_authorization'] || req.body.token || req.params.token || req.query.token;
   auth.getUserData(token)
@@ -58,14 +80,6 @@ function getUserData (req, res, next) {
     req.userInfo = user.data
     req.userData = user.data
   })
-  .then(() => next())
-  .catch(err => next(err));
-}
-
-
-function getAllUserData (req, res, next) {
-  db.any(`SELECT * FROM "user" INNER JOIN members ON members.group_id = group_id WHERE members.user_id = "user".user_id AND members.group_id = $1;`, [req.params.group_id])
-  .then(users => res.rows = users)
   .then(() => next())
   .catch(err => next(err));
 }
@@ -222,4 +236,5 @@ module.exports = {
   createImages,
   deleteGroup,
   deletePost,
+  prepareResponse,
 }

@@ -1,21 +1,8 @@
-.group-header {
-  height: 7vh;
-  width: 100%;
-  background-color: darkblue;
+.users {
+  /*width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-}
-
-.group-header h2 {
-  color: white;
-  font-size: 1em;
-  margin-left: 1%;
-}
-
-.group-header p {
-  color: white;
-  font-size: .7em;
-  margin-right: 1%;
+  overflow: scroll;*/
 }
