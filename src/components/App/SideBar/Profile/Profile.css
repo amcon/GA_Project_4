@@ -34,27 +34,36 @@
   font-size: .8em;
 }
 
+.update {
+  width: 100%;
+}
+
 .edit-prof {
-  height: 20vh;
+  height: 30vh;
   width: 100%;
   box-sizing: border-box;
   border: 1px dotted lightgrey;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   z-index: 0;
 }
 
+.edit-prof p {
+  margin-right: 4%;
+}
+
 .input {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
 }
 
 .edit-prof button {
   margin-bottom: 2%;
+  margin-left: 45%;
 }

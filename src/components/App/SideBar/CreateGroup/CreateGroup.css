@@ -11,12 +11,16 @@
 }
 
 .input {
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   margin: 2%;
+}
+
+.input p {
+  margin-right: 10%;
 }
 
 .create-group button {

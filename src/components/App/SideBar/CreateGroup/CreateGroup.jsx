@@ -5,6 +5,7 @@ class CreateGroup extends Component {
   render() {
     return (
       <div className={styles["create-group"]}>
+        <h2>Currently unavailable</h2>
         <div className={styles["input"]}>
         <p>Group Name:</p>
           <input type="text" />

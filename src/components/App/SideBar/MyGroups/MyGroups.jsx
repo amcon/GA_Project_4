@@ -5,7 +5,7 @@ class MyGroups extends Component {
   render() {
     return (
       <div className={styles["my-groups"]}>
-        <p>{this.props.group_name} <button>X</button></p>
+        <p>{this.props.group_name}</p>
       </div>
     );
   }

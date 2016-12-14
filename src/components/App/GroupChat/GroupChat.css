@@ -43,6 +43,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
-  color: white;
+/*  overflow: scroll;
+*/  color: white;
 }

@@ -5,7 +5,7 @@ class GroupsImIn extends Component {
   render() {
     return (
       <div className={styles["groups-im-in"]}>
-        <p>{this.props.group_name}</p>
+        <p onClick={() => this.props.getClickedGroup(this.props.group_id)}>{this.props.group_name}</p>
       </div>
     );
   }

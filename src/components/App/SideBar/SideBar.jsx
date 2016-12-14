@@ -26,8 +26,17 @@ class SideBar extends Component {
           group_name={group.group_name}
           group_id={group.group_id}
           admin_id={group.admin_id}
+          getClickedGroup={this.props.getClickedGroup}
         />
       );
+  }
+
+  renderCreateGroup() {
+    if (this.props.showGroupForm == true) {
+    return (
+        <CreateGroup />
+      );
+    }
   }
 
   render() {
@@ -39,15 +48,24 @@ class SideBar extends Component {
           email={this.props.user.email}
           profile_pic={this.props.user.profile_pic}
           password={this.props.user.password}
+          updateProfileUserName={this.props.updateProfileUserName}
+          updateProfileEmail={this.props.updateProfileEmail}
+          updateProfilePassword={this.props.updateProfilePassword}
+          updateProfilePic={this.props.updateProfilePic}
+          handleProfileEditSubmit={this.props.handleProfileEditSubmit}
+          showUserForm={this.props.showUserForm}
+          changeUserFormState={this.props.changeUserFormState}
         />
         <div className={styles["group-container"]}>
           <h3>Groups I Created</h3>
           {this.renderAdminGroups()}
           <h3>Groups I'm In</h3>
           {this.renderGroupsImIn()}
-          <p>+ Create Group</p>
+          <p onClick={() => this.props.changeGroupFormState()}>+ Create Group</p>
         </div>
-        <CreateGroup />
+        <div>
+          {this.renderCreateGroup()}
+        </div>
         <LogOut />
       </div>
     );

@@ -7,7 +7,7 @@ import MyPost from './MyPost/MyPost.jsx'
 class Posts extends Component {
 
   renderGroupPosts() {
-      console.log(this.props.posts);
+      // console.log(this.props.posts);
       return this.props.posts.map((post, i) =>
         <UserPost
           key={i}
