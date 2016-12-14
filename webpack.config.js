@@ -94,4 +94,4 @@ if (process.env &&
   config.devtool = undefined;
 }
 
-module.exports = config;
+// module.exports = config;
