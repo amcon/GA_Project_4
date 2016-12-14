@@ -1,19 +1,22 @@
 .create-post {
   height: 15vh;
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: salmon;
+  background-color: #FAFAFA;
+  border-radius: .5em;
 }
 
 .create-post button {
-  height: 3vh;
+  height: 5vh;
   width: 10%;
   border-style: none;
   color: white;
   margin-top: 7.5%;
+  background-color: salmon;
+  border-radius: .5em;
 }
 
 .choose {
@@ -28,13 +31,14 @@
 .choose img {
   height: 8vh;
   width: 80%;
-  border-radius: 5em;
-  border: 1px solid white;
+  border-radius: .5em;
+  /*border: 1px solid white;*/
 }
 
 .text {
   width: 30%;
-  height: 13vh;
+  height: 11vh;
+  margin-left: -2%;
 }
 
 .drop-zone {
@@ -50,10 +54,14 @@
   margin-top: 15%;
 }
 
-.useless-input {
+.useless-inputs {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   overflow: scroll;
+}
+
+.useless-inputs p {
+  font-size: 1em;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DropZone from 'react-dropzone';
+// import DropZone from 'react-dropzone';
 import styles from './CreatePost.css';
 
 
@@ -18,24 +18,25 @@ class CreatePost extends Component {
           value={this.props.postFormText}
           onChange={this.props.updateFormText}
           />
-        <DropZone
-          className={styles['drop-zone']}
-          multiple={false}
-          accept="image/*"><p>+</p>
-        </DropZone>
         <div className={styles["useless-inputs"]}>
-          <p>post pic:
-            <input
-              type="text"
-              value={this.props.postFormPic}
-              onChange={this.props.updateFormPic}
-            />
-          </p>
+          <p>upload a picture url:</p>
+          <input
+            type="text"
+            value={this.props.postFormPic}
+            onChange={this.props.updateFormPic}
+          />
         </div>
         <button onClick={this.props.handleFormSubmit}>Submit</button>
       </div>
     );
   }
 }
+
+
+        // <DropZone
+        //   className={styles['drop-zone']}
+        //   multiple={false}
+        //   accept="image/*"><p>+</p>
+        // </DropZone>
 
 export default CreatePost;

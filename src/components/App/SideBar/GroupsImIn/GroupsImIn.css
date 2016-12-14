@@ -4,4 +4,15 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+/*  border-bottom: 1px solid #FAFAFA;
+*/}
+
+.groups-im-in p {
+  margin: 0;
+  font-size: .8em;
+}
+
+.groups-im-in p:hover {
+  color: salmon;
+  cursor: pointer;
 }

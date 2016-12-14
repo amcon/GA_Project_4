@@ -1,7 +1,7 @@
 .group-chat {
   height: 95vh;
   width: 70%;
-  background-color: lightblue;
+  background-color: rgb(54, 70, 93);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -11,26 +11,28 @@
 .post-box {
   height: 73vh;
   width: 100%;
-  background-color: lightgrey;
+  background-color: rgb(54, 70, 93);
   overflow: scroll;
   display: flex;
   flex-direction: column-reverse;
+  margin: 2%;
 }
 
 .group-header {
-  height: 7vh;
+  height: 5vh;
   width: 100%;
-  background-color: darkblue;
+  background-color: rgb(54, 70, 93);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #FAFAFA;
 }
 
 .group-header h2 {
   color: white;
   font-size: 1em;
-  margin-left: 1%;
+  margin-left: 10%;
 }
 
 .group-header p {

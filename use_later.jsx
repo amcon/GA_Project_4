@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const db = require('../db/db.js');
+const db = require('./db.js');
 const auth = require('../lib/auth.js');
 const { isValidEmail } = require('../lib/lib.js');
 
@@ -107,3 +107,6 @@ module.exports = {
   getUserGroups,
   updateUser,
 }
+
+
+UPDATE "user" SET user_name = 'abc123', email = 'abc123@gmail.com', profile_pic = 'https://i.ytimg.com/vi/oVXZTmi2ruI/maxresdefault.jpg', password = '12345' WHERE user_id = 1;

@@ -23,6 +23,12 @@ class GroupChat extends Component {
           <h2>{this.props.group.group_name}</h2>
           <div>Users: {this.renderGroupsUsers()}</div>
         </div>
+        <div className={styles["post-box"]}>
+          <Posts
+            posts={this.props.posts}
+            handleDeletePost={this.props.handleDeletePost}
+          />
+        </div>
         <CreatePost
           user={this.props.user}
           postFormText={this.props.postFormText}
@@ -31,12 +37,6 @@ class GroupChat extends Component {
           updateFormPic={this.props.updateFormPic}
           handleFormSubmit={this.props.handleFormSubmit}
         />
-        <div className={styles["post-box"]}>
-          <Posts
-            posts={this.props.posts}
-            handleDeletePost={this.props.handleDeletePost}
-          />
-        </div>
       </div>
     );
   }

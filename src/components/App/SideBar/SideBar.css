@@ -3,12 +3,29 @@
   width: 30%;
   overflow: scroll;
   box-sizing: border-box;
-  border-left: 1px solid black;
+  background-color: rgb(54, 70, 93);
   position: relative;
   z-index: 1;
+  color: white;
+  padding-top: 5%;
 }
 
 .group-container {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #FAFAFA;
+}
+
+.group-container h3 {
+  margin-bottom: 1%;
+  font-size: 1em;
+}
+
+.group-container div {
+  margin: 2%;
   display: flex;
   flex-direction: column;
   justify-content: center;

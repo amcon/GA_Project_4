@@ -12,7 +12,7 @@ class UserPost extends Component {
           </div>
           <img src={this.props.image} />
         </div>
-        <button onClick={() => this.props.handleDeletePost(this.props.post_id)}>X</button>
+        <button onClick={() => this.props.handleDeletePost(this.props.post_id)}>x</button>
       </div>
     );
   }

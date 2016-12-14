@@ -31,6 +31,7 @@
 }
 
 .text {
+  width: 90%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -51,4 +52,10 @@
   left: -17%;
   margin-top: 1%;
   border-style: none;
+  background-color: #FAFAFA;
 }
+
+/*#trash {
+  height: 2vh;
+  width: 2%;
+}*/

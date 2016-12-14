@@ -57,10 +57,14 @@ class SideBar extends Component {
           changeUserFormState={this.props.changeUserFormState}
         />
         <div className={styles["group-container"]}>
-          <h3>Groups I Created</h3>
+          <div>
+          <h3>Groups I Created:</h3>
           {this.renderAdminGroups()}
-          <h3>Groups I'm In</h3>
+          </div>
+          <div>
+          <h3>Groups I'm In:</h3>
           {this.renderGroupsImIn()}
+          </div>
           <p onClick={() => this.props.changeGroupFormState()}>+ Create Group</p>
         </div>
         <div>

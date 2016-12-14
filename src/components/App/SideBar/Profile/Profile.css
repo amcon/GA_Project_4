@@ -1,17 +1,19 @@
 .profile {
-  width: 100%;
-  display: flex;
+  width: 90%;
+/*  height: 40vh;
+*/  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 2% 0 2% 0;
+  border-bottom: 1px solid #FAFAFA;
 }
 
 .profile img {
   height: 18vh;
   width: 35%;
   border-radius: 5em;
-  border: 1px solid black;
+  border: 1px solid #FAFAFA;
   text-align: center;
 }
 
@@ -42,8 +44,8 @@
   height: 30vh;
   width: 100%;
   box-sizing: border-box;
-  border: 1px dotted lightgrey;
-  display: flex;
+/*  border: 1px dotted lightgrey;
+*/  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -66,4 +68,24 @@
 .edit-prof button {
   margin-bottom: 2%;
   margin-left: 45%;
+  height: 4vh;
+  width: 10%;
+  border-style: none;
+  background-color: lightgrey;
+  color: white;
+}
+
+.edit-prof input {
+  background-color: #FAFAFA;
+  border-style: none;
+  border-radius: .2em;
+}
+
+.profile button {
+  height: 4vh;
+  width: 18%;
+  border-radius: .5em;
+  border-style: none;
+  background-color: lightgrey;
+  color: white;
 }

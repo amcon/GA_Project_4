@@ -6,8 +6,8 @@ class Header extends Component {
     return (
       <div className={styles["header"]}>
         <div className={styles["logo"]}>
-        <h1>GroupIt</h1>
-        <img src="" alt="logo" />
+        <img src="http://icons.iconarchive.com/icons/iconexpo/speech-balloon-grey/256/speech-balloon-white-g-icon.png" alt="logo" />
+        <h1>roupIt</h1>
         </div>
       </div>
     );
