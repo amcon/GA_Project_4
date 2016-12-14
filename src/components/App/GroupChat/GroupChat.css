@@ -13,6 +13,8 @@
   width: 100%;
   background-color: lightgrey;
   overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .group-header {
