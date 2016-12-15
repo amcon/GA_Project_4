@@ -7,7 +7,7 @@ they would like to sell, and watch other user's products for potential purchase.
 
 groupIt is a full stack web application for group content sharing. Much like a facebook private group. You as an admin can create group and invite users to be a part of this group. This content is locked into the group so you can feel safe to be as open as you and the members would like.
 
-![Yonce](https://media1.giphy.com/media/nbqZRSWuuwk0g/200_s.gif)
+![Yonce](https://media.tenor.co/images/e27b9165759754c5e9c8f22685693bc7/tenor.gif)
 
 ### User Story
 
