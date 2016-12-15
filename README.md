@@ -22,7 +22,7 @@ The application uses a SQL database and is deployed on Heroku.
 
 ### Wireframes
 ![Wireframe 1](/public/Project_4.png)
-![ERD](/public/Selected_Project_4_ERD.png)
+![ERD](/public/Project_4_ERD.png)
 
 
 ### Challenges
