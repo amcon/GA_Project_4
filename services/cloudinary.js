@@ -1,3 +1,5 @@
+// For when I get cloudinary working. Thank you Joey P. in chairShare for the code I referenced
+
 const cloudinary = require('cloudinary');
 
 const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;

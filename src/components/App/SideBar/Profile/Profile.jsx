@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './Profile.css';
 
 class Profile extends Component {
-
+  // renders this component (which could be separated for the sake of cleanliness) to update user when clicked
   renderUpdateUser() {
     if (this.props.showUserForm == true) {
       return (

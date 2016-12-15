@@ -22,3 +22,6 @@ class LogIn extends Component {
 }
 
 export default LogIn;
+
+
+// placeholder for my logIn component when I get user auth up

@@ -16,3 +16,7 @@ class OverallApp extends Component {
 }
 
 export default OverallApp;
+
+
+// when I get user auth with JSON webtoken, I'll use react-router to display through
+// user sign up and login

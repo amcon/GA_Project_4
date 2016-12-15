@@ -7,7 +7,7 @@ import LogOut from './LogOut/LogOut.jsx';
 import CreateGroup from './CreateGroup/CreateGroup.jsx';
 
 class SideBar extends Component {
-
+  // function maps through the groups array and creates the MyGroups component
   renderAdminGroups() {
     return this.props.admin_groups.map((group, i) =>
         <MyGroups
@@ -18,7 +18,7 @@ class SideBar extends Component {
         />
       );
   }
-
+  // see above
   renderGroupsImIn() {
     return this.props.groups_im_in.map((group, i) =>
         <GroupsImIn
@@ -30,7 +30,7 @@ class SideBar extends Component {
         />
       );
   }
-
+  // this will make the creategroup component render if the state is true (when clicked)
   renderCreateGroup() {
     if (this.props.showGroupForm == true) {
     return (

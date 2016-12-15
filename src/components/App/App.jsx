@@ -5,6 +5,7 @@ import GroupChat from './GroupChat/GroupChat.jsx';
 import SideBar from './SideBar/SideBar.jsx';
 
 class App extends Component {
+  // set initial state
   constructor(props){
     super(props);
       this.state = {
@@ -29,7 +30,8 @@ class App extends Component {
         showUserForm: false,
       };
     }
-
+    // getUser is my frontend fetch call to my user route to get the user information, set state,
+    // and be able to pass props to my children components **currently set static until user auth is set
     getUser() {
       fetch(`/api/users/1`)
       .then(r => r.json())
@@ -41,7 +43,7 @@ class App extends Component {
       })
       .catch(err => console.log(err));
     }
-
+    // getGroupsIAdmin is the front end call to set state/render the "groups I created" data in the sidebar
     getGroupsIAdmin() {
       fetch(`/api/groups/users/1/admin`)
       .then(r => r.json())
@@ -53,7 +55,7 @@ class App extends Component {
       })
       .catch(err => console.log(err));
     }
-
+    // similar to groupsIAdmin, this gets all the groups the user is in
     getGroupsImIn() {
       fetch(`/api/groups/users/1/groups`)
       .then(r => r.json())
@@ -64,7 +66,7 @@ class App extends Component {
         // console.log(this.state.groups_im_in);
       })
     }
-
+    // this is the fetch that gets all the information that will be passed to the GroupChat component
     getDefaultGroup() {
       fetch(`/api/groups/${this.state.clickedGroup}`)
       .then(r => r.json())
@@ -77,7 +79,8 @@ class App extends Component {
         // console.log(this.state.getPosts);
       })
     }
-
+    // this is the function that when clicked in GroupsImIn, it sets the state to the selected group and calls
+    // getDefaultGroup to rerender the group component.
     getClickedGroup(id) {
       console.log("I'm firing", id)
       // let clickedGroup;
@@ -100,6 +103,7 @@ class App extends Component {
     //   })
     // }
 
+    // these "update" functions gets the value typed in the form inputs to update/submit values
     updateFormText(e) {
       this.setState({
         postFormText: e.target.value,
@@ -111,7 +115,7 @@ class App extends Component {
         postFormPic: e.target.value,
       });
     }
-
+    // handleFormSubmit runs the fetch call to create and post a new post to the group its in.
     handleFormSubmit() {
       fetch(`/api/groups/${this.state.clickedGroup}`, {
         headers: {
@@ -134,7 +138,7 @@ class App extends Component {
       .then(() => this.getDefaultGroup())
       .catch(err => console.log(err));
     }
-
+    // updates state
     updateProfileUserName(e) {
       this.setState({
         profUserName: e.target.value,
@@ -158,7 +162,7 @@ class App extends Component {
         profPic: e.target.value,
       })
     }
-
+    // handleProfileEditSubmit edits the profile information with the inputs typed in the form in sidebar
     handleProfileEditSubmit() {
       fetch('/api/users/1', {
         headers: {
@@ -181,7 +185,7 @@ class App extends Component {
       .then(() => this.getUser())
       .catch(err => console.log(err));
     }
-
+    // this fetch call will delete the selected post from the database
     handleDeletePost(id) {
       fetch(`/api/groups/1/${id}`, {
         method: 'delete'
@@ -195,7 +199,8 @@ class App extends Component {
       .then(() =>this.getDefaultGroup())
       .catch(err => console.log(err));
     }
-
+    // these change functions toggle the state from false to true to render the create/update components when
+    // clicked in the sidebar
     changeGroupFormState() {
       this.setState({
         showGroupForm: true,
@@ -207,14 +212,14 @@ class App extends Component {
         showUserForm: true,
       })
     }
-
+    // when the components mount, it will run the following functions
     componentWillMount() {
     this.getUser();
     this.getGroupsIAdmin();
     this.getGroupsImIn();
     this.getDefaultGroup();
    }
-
+   // passing state/functions to be used as props in children components
     render() {
       return (
         <div className={styles['App']}>

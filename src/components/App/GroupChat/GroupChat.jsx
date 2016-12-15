@@ -5,7 +5,7 @@ import Posts from './Posts/Posts.jsx';
 import CreatePost from './CreatePost/CreatePost.jsx';
 
 class GroupChat extends Component {
-
+  // maps through the user array to assign a specific key and render the groupheader component
   renderGroupsUsers() {
     // console.log(this.props.group);
     return this.props.users.map((user, i) =>

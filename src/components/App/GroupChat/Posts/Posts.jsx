@@ -5,7 +5,7 @@ import MyPost from './MyPost/MyPost.jsx'
 
 
 class Posts extends Component {
-
+  // maps through the posts array, assigns a specific key, and renders the userpost component
   renderGroupPosts() {
       // console.log(this.props.posts);
       return this.props.posts.map((post, i) =>
