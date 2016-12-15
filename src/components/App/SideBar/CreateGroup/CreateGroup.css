@@ -1,0 +1,40 @@
+.create-group {
+  height: 35vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2%;
+  box-sizing: border-box;
+/*  border: 1px dotted lightgrey;*/
+}
+
+.input {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 2%;
+}
+
+.input p {
+  margin-right: 10%;
+}
+
+.create-group button {
+  margin: 3%;
+  height: 20vh;
+  width: 20%;
+  border-style: none;
+  border-radius: .5em;
+  background-color: salmon;
+  color: white;
+}
+
+.input input {
+  background-color: #FAFAFA;
+  border-style: none;
+  border-radius: .2em;
+}

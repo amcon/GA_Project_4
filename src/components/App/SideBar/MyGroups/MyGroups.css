@@ -1,0 +1,12 @@
+.my-groups {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-groups p {
+  margin: 0;
+  font-size: .8em;
+}

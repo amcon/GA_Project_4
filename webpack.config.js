@@ -8,7 +8,7 @@ const BUILD_DIR         = path.resolve(__dirname, 'dist');
 const APP_DIR           = path.resolve(__dirname, 'src');
 
 
-module.exports = {
+const config = {
   entry: `${APP_DIR}/index.js`,
   output: {
     path: BUILD_DIR,
@@ -22,6 +22,11 @@ module.exports = {
     reasons: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+      },
+    }),
     new HtmlWebpackPlugin({
       title: 'GroupIt',
       xhtml: true,
@@ -66,3 +71,27 @@ module.exports = {
     ]
   }
 };
+
+if (process.env &&
+  process.env.NODE_ENV &&
+  process.env.NODE_ENV === 'production') {
+  const prodPlugins = [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: true,
+      },
+      output: {
+        comments: false,
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin('/js/common.js'),
+  ];
+
+  config.plugins = config.plugins.concat(prodPlugins);
+
+  config.cache = false;
+  config.debug = false;
+  config.devtool = undefined;
+}
+
+module.exports = config;

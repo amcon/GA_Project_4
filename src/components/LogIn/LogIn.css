@@ -1,0 +1,14 @@
+.log-in {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightblue;
+}
+
+.log-container {
+  height: 30vh;
+  width: 30%;
+  background-color: white;
+}
